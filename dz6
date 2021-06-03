@@ -1,0 +1,69 @@
+public class main {
+    public static void main (String [] args){
+        Cats a = new Cats();
+      a.jump(2);
+       a.jump(3);
+        a.run(200);
+        a.run(201);
+       a.swim(1);
+
+       Dogs dogs = new Dogs();
+        dogs.swim(10);
+        dogs.swim(11);
+        dogs.jump(0.5);
+        dogs.jump(1);
+        dogs.run(500);
+        dogs.run(501);
+    }
+}
+class Animals {
+    void jump (double jump_hight){
+        System.out.println("прыгнул на высоту " + jump_hight);
+    }
+    void run (int run_distance){
+        System.out.println("пробежал дистанцию  " + run_distance);
+    }
+    void swim (int swim_distance){
+        System.out.println("проплыл " + swim_distance);
+    }
+
+}
+class Cats extends Animals{
+    int runLimit = 200;
+    int jumpLimit = 2;
+    int swimLimit = 0;
+    @Override
+    void swim(int swim_distance) {
+        System.out.println("Кот не умеет плавать");
+    }
+    @Override
+    void jump(double jump_hight) {
+        if (jump_hight > jumpLimit) {System.out.println("Допрыгнуть не смог");}
+        else super.jump(jump_hight);
+    }
+    @Override
+    void run(int run_distance) {
+        if (run_distance > runLimit) {System.out.println("Добежать не смог");}
+        else super.run(run_distance);
+    }
+}
+class Dogs extends Animals {
+    int runLimit = 500;
+    double jumpLimit = 0.5;
+    int swimLimit = 10;
+    @Override
+    void swim(int swim_distance) {
+        if (swim_distance > swimLimit) {System.out.println("Проплыть не смог");}
+        else super.swim(swim_distance);
+    }
+    @Override
+    void jump(double jump_hight) {
+        if (jump_hight > jumpLimit) {System.out.println("Допрыгнуть не смог");}
+        else super.jump(jump_hight);
+    }
+    @Override
+    void run(int run_distance) {
+        if (run_distance > runLimit) {System.out.println("Добежать не смог");}
+        else super.run(run_distance);
+    }
+}

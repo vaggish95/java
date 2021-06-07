@@ -1,0 +1,42 @@
+class MainClass {
+    public static void main(String[] args) {
+        Cat cat = new Cat("Barsik", 95);
+        Plate plate = new Plate(94);
+        plate.addFood(1);
+        
+     cat.checkFull(plate);
+     System.out.println("Cытость котика: " + cat.full);
+    }
+}
+
+class Plate {
+    int food;
+    public Plate(int food) {
+        this.food = food;
+    }
+
+    void addFood (int x) {
+        food += x;
+    }
+}
+
+class Cat {
+    private String name;
+    private int appetite;
+    boolean full;
+    public Cat(String name, int appetite) {
+        this.name = name;
+        this.appetite = appetite;
+        this.full = false;
+    }
+
+     void checkFull(Plate p){
+        if (appetite > p.food){
+            System.out.println("Еды не хватило");
+        }
+        else {
+            full = true;
+            System.out.println("Остаток еды " + (p.food -= appetite));
+        }
+    }
+}

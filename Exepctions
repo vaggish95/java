@@ -1,0 +1,52 @@
+import java.util.regex.Pattern;
+public class main {
+//1 Напишите метод, на вход которого подаётся двумерный строковый массив размером 4х4.
+// При подаче массива другого размера необходимо бросить исключение MyArraySizeException.
+//
+// Далее метод должен пройтись по всем элементам массива, преобразовать в int и просуммировать.
+// Если в каком-то элементе массива преобразование не удалось
+// (например, в ячейке лежит символ или текст вместо числа),
+// должно быть брошено исключение MyArrayDataException с детализацией,
+// в какой именно ячейке лежат неверные данные.
+
+    static String [][] arr1 = {{"1","2","3","4"},{"1","2","3","4"},{"1","2","3","4"},{"1","2","3","4"}};
+
+public static void main (String [] args) throws MyArraySizeExepction, MyArrayDataExepction {
+   task1(arr1);
+
+}
+
+    static void task1(String[][] arr) throws MyArraySizeExepction, MyArrayDataExepction {
+        if (arr.length != 4
+                ^ arr[0].length!=4
+                ^ arr[1].length!=4
+                ^ arr[2].length!=4
+                ^ arr[3].length!=4) {
+            throw new MyArraySizeExepction ();
+            }
+
+        int count = 0;
+        try {
+            for (int x = 0; x < arr.length; x++) {
+                for (int y = 0; y < arr[x].length; y++) {
+                    count = count + Integer.parseInt(arr[x][y]);
+
+                }
+            }
+            System.out.println(count);
+
+        } catch (NumberFormatException e){
+            throw new MyArrayDataExepction();
+        }
+
+        }
+        }
+
+class MyArraySizeExepction extends Exception {
+
+}
+
+class MyArrayDataExepction extends Exception {
+
+}
+
